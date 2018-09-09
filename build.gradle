@@ -4,31 +4,48 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+group = 'org.pangyoparty'
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 
-group = 'org.pp'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+	def javaVersion = 1.8
+	sourceCompatibility = javaVersion
+	targetCompatibility = javaVersion
+	[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-repositories {
-	mavenCentral()
-}
+	ext {
+		randomBeansVersion = '3.7.0'
+	}
 
+	repositories {
+		mavenCentral()
+		mavenLocal()
+		maven { url "http://repo.spring.io/snapshot" }
+		maven { url "http://repo.spring.io/libs-milestone" }
+		maven { url "http://repo.spring.io/libs-release" }
+	}
 
-dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.boot:spring-boot-starter-webflux')
-	runtime('mysql:mysql-connector-java')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('io.projectreactor:reactor-test')
+	dependencies {
+		compile('org.springframework.boot:spring-boot-starter')
+		compile('org.projectlombok:lombok')
+		testCompile('org.springframework.boot:spring-boot-starter-test')
+		testCompile "io.github.benas:random-beans:${randomBeansVersion}"
+	}
+
+	clean.doLast {
+		file('out').deleteDir()
+	}
 }

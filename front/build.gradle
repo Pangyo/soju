@@ -1,0 +1,27 @@
+group rootProject.group
+ext {
+
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url "http://maven.twttr.com/" }
+}
+
+dependencies {
+    compile project(":shared")
+
+    /* Web */
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-configuration-processor')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRun {
+    sourceResources sourceSets.main
+}
+
+bootJar {
+    mainClassName = 'org.pangyoparty.soju.front.FrontApplication'
+}

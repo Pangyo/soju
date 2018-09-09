@@ -1,0 +1,28 @@
+group rootProject.group
+ext {
+    jacksonVersion = '2.9.2'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url "http://maven.twttr.com/" }
+}
+
+dependencies {
+    /* Jackson */
+    compile("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
+    compile("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+    compile("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${jacksonVersion}")
+    compile("com.fasterxml.jackson.module:jackson-module-parameter-names:${jacksonVersion}")
+}
+
+jar {
+    enabled = true
+    baseName = rootProject.name + "-" + project.name
+    archiveName = baseName + '-' + version + '.' + extension
+}
+
+bootJar.enabled = false

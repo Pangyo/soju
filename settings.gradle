@@ -1,1 +1,5 @@
 rootProject.name = 'soju'
+include 'api'
+include 'front'
+include 'shared'
+

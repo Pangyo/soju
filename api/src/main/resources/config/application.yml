@@ -1,0 +1,9 @@
+server:
+  port: 7000
+
+message: 테스트 성공
+
+## Spring
+spring:
+  banner:
+    location: /banner/pangyoparty_banner.txt
