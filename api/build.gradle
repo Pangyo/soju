@@ -11,11 +11,6 @@ repositories {
 
 dependencies {
     compile project(":shared")
-    
-
-
-    
-    
 
     /* Web */
     compile('org.springframework.boot:spring-boot-starter-web')
