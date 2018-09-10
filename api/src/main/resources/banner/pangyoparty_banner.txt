@@ -7,4 +7,4 @@ ${Ansi.RED}|    ___||       ||  |  | |  || |_ |_  ||_     _||  |_|  |
 ${Ansi.RED}|   |    |   _   ||  |   |   ||_  |__| |  |   |  |       |
 ${Ansi.RED}|___|    |__| |__||__|    |__|  |______|  |___|  |_______|
 
-${Ansi.GREEN}:: PAYCO Life, Running Spring Boot ${spring-boot.formatted-version} ::
+${Ansi.GREEN}:: Created by jaeeun.yoo, Running Spring Boot ${spring-boot.formatted-version} ::
